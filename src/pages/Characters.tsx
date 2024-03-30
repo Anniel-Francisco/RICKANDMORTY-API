@@ -21,7 +21,7 @@ export default function Characters(){
           },[]);
 
           return (
-                    <div style={{ backgroundColor:"#262c3a", padding:'10px 20px'}} className="grid grid-cols-3 max-md:grid-cols-1 gap-4 min-h-full">
+                    <div style={{ backgroundColor:"#262c3a", padding:'10px 20px'}} className="grid grid-cols-2 max-md:grid-cols-1 gap-5 min-h-full">
                       {characters.map((character, index) => (
                         <Card
                           key={index}

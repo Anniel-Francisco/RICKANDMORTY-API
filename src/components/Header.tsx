@@ -9,7 +9,7 @@ export function Header(){
 
           return (
           <>
-          <div style={{height:'80px', backgroundColor:"#262c3a", padding:'10px 20px 0 20px'}} className="flex justify-between">
+          <div style={{height:'80px', backgroundColor:"#262c3a", padding:'10px 20px 0 20px',}} className="flex justify-between sticky top-0 z-10">
                     <div className="flex" style={{width:'100%'}}>
                               <img onClick={() => goToPage('/')} src="src/assets/rickImage.png" alt="rick-image" className="cursor-pointer hover:-translate-y-1 duration-300" />
                     </div>
