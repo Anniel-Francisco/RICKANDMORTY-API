@@ -6,7 +6,7 @@ export function Card({id, name, gender, species, status, type, image, origin, lo
                               {id}
                     </div>
                     <div>
-                              <img src={image} alt="image" className="rounded-l-xl" />
+                              <img src={image} alt="image" className="rounded-l-xl h-full" />
                     </div>
                     <div className="p-5 text-white">
                               <div className="flex flex-col">
