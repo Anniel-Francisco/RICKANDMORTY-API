@@ -4,8 +4,8 @@ import { FaLinkedin } from "react-icons/fa";
 export default function Home(){
 
           const icons:Array<object> = [
-                    {icon:  <FaGithub className="text-white w-7" />, link:''},
-                    {icon: <FaLinkedin className="text-white w-7"/>, link:'https://www.linkedin.com/in/anniel-francisco-reyes-javier-b22347274/'},
+                    {icon: <FaGithub size={30} className="text-white" />, link:''},
+                    {icon: <FaLinkedin size={30} className="text-white"/>, link:'https://www.linkedin.com/in/anniel-francisco-reyes-javier-b22347274/'},
           ];
 
           return(
