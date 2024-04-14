@@ -11,14 +11,14 @@ export default function Characters(){
           const location = useLocation();
           const navigate = useNavigate();
           const [characters, setCharacters] = useState<Array<object>>([]);
-          const [info, setInfo] = useState<object>({});
+          const [count, setCount] = useState<number>(0);
           const [page, setPage] = useState<string>('1');
 
           const getCharacters = async () =>{
                     try{
                       if(!location.search) location.search=`?page=1`;
-                              const {data:{info,results}} = await RickMortyAPI.getCharacters(location.search);
-                              setInfo(info);
+                              const {data:{info:{pages},results}} = await RickMortyAPI.getCharacters(location.search);
+                              setCount(pages);
                               setCharacters(results);
                     }catch(error){
                               console.error(error);
@@ -40,7 +40,7 @@ export default function Characters(){
           return (
                     <div style={{ backgroundColor:"#262c3a", padding:'10px 20px'}} className="flex flex-col min-h-full">
                      <div className="flex justify-center pb-4">
-                     <Paginate count={info?.pages} color="primary" page={page} />
+                     <Paginate count={count} color="primary" page={page} />
                      </div>
                       <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
                           {characters.map((character, index) => {
