@@ -9,11 +9,11 @@ import { Paginate } from '../components/Paginate';
 import { CardCharacter } from "../components/Cards/CardCharacter";
 
 export default function Characters(){
+          const location = useLocation();
+          const navigate = useNavigate();
           const [characters, setCharacters] = useState<Array<object>>([]);
           const [info, setInfo] = useState<object>({});
           const [page, setPage] = useState<string>('1');
-          const location = useLocation();
-          const navigate = useNavigate();
 
           const getCharacters = async () =>{
                     try{

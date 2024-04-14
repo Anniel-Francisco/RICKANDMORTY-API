@@ -2,17 +2,28 @@ import PropTypes from "prop-types";
 export function CardCharacter({id, name, gender, species, status, type, image, origin, location}){
           return (
           <div style={{backgroundColor:'#3c3e44'}} className="flex relative rounded-xl shadow-md shadow-slate-800">
-                    <div style={{width:'30px', height:'30px', borderRadius:'50%', color:'#262c3a'}} className="flex justify-center items-center absolute font-bold right-4 top-4 bg-white">
+                    <div style={{width:'35px', height:'35px', color:'#262c3a'}} className="flex justify-center items-center absolute font-bold right-4 bottom-4 bg-white rounded-full">
                               {id}
                     </div>
                     <div>
                               <img src={image} alt="image" className="rounded-l-xl h-full" />
                     </div>
-                    <div className="p-5 text-white">
+                    <div className="grid grid-cols-1 grid-rows-3 p-5 text-white">
                               <div className="flex flex-col">
                                         <span className="text-3xl font-bold">{name}</span>
-                                        <span className="font-semibold">{status} - {species}</span>
+                                        <span className="font-semibold">{status} | {species} | {gender}</span>
                               </div>
+
+                              <div className="flex flex-col">
+                                        <span style={{color:"#9b9c8a"}} className="font-medium text-base">Last location: </span>
+                                        <span className="text-lg">{location.name}</span>
+                              </div>
+
+                              <div className="flex flex-col">
+                                        <span style={{color:"#9b9c8a"}} className="font-medium text-base">Origin: </span>
+                                        <span className="text-lg">{origin.name}</span>
+                              </div>
+                            
                     </div>
 
           
@@ -20,8 +31,8 @@ export function CardCharacter({id, name, gender, species, status, type, image, o
 }
 
 CardCharacter.propTypes = {
-          id:PropTypes.number,
-          name:PropTypes.string,
+          id: PropTypes.number,
+          name: PropTypes.string,
           gender: PropTypes.string,
           status: PropTypes.string,
           type: PropTypes.string,
