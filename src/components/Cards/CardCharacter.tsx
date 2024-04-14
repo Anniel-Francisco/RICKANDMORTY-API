@@ -25,8 +25,6 @@ export function CardCharacter({id, name, gender, species, status, type, image, o
                               </div>
                             
                     </div>
-
-          
           </div>);
 }
 
