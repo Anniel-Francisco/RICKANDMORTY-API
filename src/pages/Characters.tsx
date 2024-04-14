@@ -41,7 +41,7 @@ export default function Characters(){
           return (
                     <div style={{ backgroundColor:"#262c3a", padding:'10px 20px'}} className="flex flex-col min-h-full">
                      <div className="flex justify-center pb-4">
-                     <Paginate count={info?.pages} color="secondary" page={page} />
+                     <Paginate count={info?.pages} color="primary" page={page} />
                      </div>
                       <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
                           {characters.map((character, index) => {
