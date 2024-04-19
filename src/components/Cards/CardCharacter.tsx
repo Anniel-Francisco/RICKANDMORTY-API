@@ -15,12 +15,12 @@ export function CardCharacter({id, name, gender, species, status, type, image, o
                               </div>
 
                               <div className="flex flex-col">
-                                        <span style={{color:"#9b9c8a"}} className="font-medium text-base">Last location: </span>
+                                        <span style={{color:"#c7c7bd"}} className="font-medium text-base">Last location: </span>
                                         <span className="text-lg">{location.name}</span>
                               </div>
 
                               <div className="flex flex-col">
-                                        <span style={{color:"#9b9c8a"}} className="font-medium text-base">Origin: </span>
+                                        <span style={{color:"#c7c7bd"}} className="font-medium text-base">Origin: </span>
                                         <span className="text-lg">{origin.name}</span>
                               </div>
                             

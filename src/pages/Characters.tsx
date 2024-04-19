@@ -38,7 +38,7 @@ export default function Characters(){
             navigate(`${location?.pathname}${location?.search}`);
           },[]);
           return (
-                    <div style={{ backgroundColor:"#262c3a", padding:'10px 20px'}} className="flex flex-col min-h-full">
+                    <div style={{ backgroundColor:"#262c3a", padding:'10px 20px', minHeight:'100vh'}} className="flex flex-col min-h-full">
                      <div className="flex justify-center pb-4">
                      <Paginate count={count} color="primary" page={page} />
                      </div>
