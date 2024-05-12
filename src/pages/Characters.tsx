@@ -1,63 +1,75 @@
-
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 //
-import RickMortyAPI from "../api/RickMortyAPI"
+import RickMortyAPI from "../api/RickMortyAPI";
 //
-import { Paginate } from '../components/Paginate';
+import { Paginate } from "../components/Paginate";
 import { CardCharacter } from "../components/Cards/CardCharacter";
 
-export default function Characters(){
-          const location = useLocation();
-          const navigate = useNavigate();
-          const [characters, setCharacters] = useState<Array<object>>([]);
-          const [count, setCount] = useState<number>(0);
-          const [page, setPage] = useState<string>('1');
+export default function Characters() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [characters, setCharacters] = useState<Array<object>>([]);
+  const [count, setCount] = useState<number>(0);
+  const [page, setPage] = useState<string>("1");
 
-          const getCharacters = async () =>{
-                    try{
-                      if(!location.search) location.search=`?page=1`;
-                              const {data:{info:{pages},results}} = await RickMortyAPI.getCharacters(location.search);
-                              setCount(pages);
-                              setCharacters(results);
-                    }catch(error){
-                              console.error(error);
-                    }
-          }
-          const setCurrentPage = () =>{
-            const searchParams = new URLSearchParams(location.search);
-            setPage(searchParams.get('page') || '');
-          };
-          
-          useEffect(() => {
-            getCharacters();
-            setCurrentPage();
-          },[location.search]);
-          
-          useEffect(() =>{
-            navigate(`${location?.pathname}${location?.search}`);
-          },[]);
+  const getCharacters = async () => {
+    try {
+      if (!location.search) location.search = `?page=1`;
+      const {
+        data: {
+          info: { pages },
+          results,
+        },
+      } = await RickMortyAPI.getCharacters(location.search);
+      setCount(pages);
+      setCharacters(results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const setCurrentPage = () => {
+    const searchParams = new URLSearchParams(location.search);
+    setPage(searchParams.get("page") || "");
+  };
+
+  useEffect(() => {
+    getCharacters();
+    setCurrentPage();
+  }, [location.search]);
+
+  useEffect(() => {
+    navigate(`${location?.pathname}${location?.search}`);
+  }, []);
+  return (
+    <div
+      style={{
+        backgroundColor: "#262c3a",
+        padding: "10px 20px",
+        minHeight: "100vh",
+      }}
+      className="flex flex-col"
+    >
+      <div className="flex justify-center pb-4">
+        <Paginate count={count} color="primary" page={page} />
+      </div>
+      <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
+        {characters.map((character, index) => {
           return (
-                    <div style={{ backgroundColor:"#262c3a", padding:'10px 20px', minHeight:'100vh'}} className="flex flex-col min-h-full">
-                     <div className="flex justify-center pb-4">
-                     <Paginate count={count} color="primary" page={page} />
-                     </div>
-                      <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
-                          {characters.map((character, index) => {
-                                    return <CardCharacter
-                                    key={index}
-                                    id={character.id}
-                                    name={character.name}
-                                    gender={character.gender}
-                                    species={character.species}
-                                    status={character.status}
-                                    type={character.type}
-                                    image={character.image}
-                                    origin={character.origin}
-                                    location={character.location}
-                                    />
-                            })}
-                      </div>
-                    </div>
-                  );
+            <CardCharacter
+              key={index}
+              id={character.id}
+              name={character.name}
+              gender={character.gender}
+              species={character.species}
+              status={character.status}
+              image={character.image}
+              origin={character.origin}
+              location={character.location}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }

@@ -6,7 +6,7 @@ export default {
         return axios.get(`https://rickandmortyapi.com/api/character${query}`).then(data => data);
     },
     
-    async getLocations(){
-
+    async getLocations(query: string){
+        return axios.get(`https://rickandmortyapi.com/api/location${query}`).then((data) => data);
     }
 }
