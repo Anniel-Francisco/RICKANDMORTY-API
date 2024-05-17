@@ -5,11 +5,13 @@ import RickMortyAPI from "../api/RickMortyAPI"
 //
 import { Paginate } from '../components/Paginate';
 import { CardLocation } from "../components/Cards/CardLocation";
+//
+import LocationI from "../interfaces/LocationI";
 
 export default function Locations(){
           const location = useLocation();
           const navigate = useNavigate();
-          const [locations, setLocations] = useState<Array<object>>([]);
+          const [locations, setLocations] = useState<Array<LocationI>>([]);
           const [count, setCount] = useState<number>(0);
           const [page, setPage] = useState<string>('1');
 
@@ -34,11 +36,11 @@ export default function Locations(){
           },[location.search]);
           
           useEffect(() =>{
-            navigate(`${location?.pathname}${location?.search}`);
+            navigate(`${location.pathname}${location.search}`);
           },[]);
           return <div style={{ backgroundColor:"#262c3a", padding:'10px 20px', minHeight:'100vh'}} className="flex flex-col">
                     <div className="flex justify-center pb-4">
-                     <Paginate count={count} color="primary" page={page} />
+                     <Paginate count={count} page={page} />
                     </div>
                     <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
                               {

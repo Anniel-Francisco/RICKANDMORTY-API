@@ -1,9 +1,13 @@
 import { useNavigate, useLocation } from "react-router-dom";
 //
+type RouteT = {
+       name: string;
+       path: string;
+}
 export function Header(){
        const navigate = useNavigate();
        const location = useLocation();
-       const routes: Array<object> = [{name:'Home', path:'/'},{name:'Characters', path:'/characters' }, {name:'Locations', path:'/locations' }];
+       const routes: Array<RouteT> = [{name:'Home', path:'/'},{name:'Characters', path:'/characters' }, {name:'Locations', path:'/locations' }];
 
           const goToPage = (route:string) => {
               navigate(route);

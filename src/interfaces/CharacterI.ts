@@ -1,13 +1,18 @@
+type OriginT = {
+  name: string;
+}
+type LocationT = {
+  name: string;
+}
 interface CharacterI {
   id: number;
   name: string;
   gender: string;
   species: string;
   status: string;
-  type: string;
   image: string;
-  origin: object;
-  location: object;
+  origin: OriginT;
+  location: LocationT;
 }
 
 export default CharacterI;

@@ -6,7 +6,12 @@ import Stack from '@mui/material/Stack';
 //
 import PropTypes from "prop-types";
 
-export function Paginate({count, color, page}){
+interface Paginate {
+  count: number,
+  page:string,
+}
+
+export function Paginate({count, page}: Paginate){
         const location = useLocation();
         const navigate = useNavigate();
         const handleChange = async (event: React.ChangeEvent<unknown>, value: number) => {
@@ -18,7 +23,7 @@ export function Paginate({count, color, page}){
             navigate(`${location.pathname}?${searchParams.toString()}`);
         };
           return <Stack className='bg-white p-2 rounded-full' spacing={1}>
-                    <Pagination count={count} color={color} showFirstButton showLastButton page={page ? parseInt(page) : 1} onChange={handleChange}  /> 
+                    <Pagination count={count} color="primary" showFirstButton showLastButton page={page ? parseInt(page) : 1} onChange={handleChange}  /> 
                  </Stack>    
 }
 

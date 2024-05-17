@@ -5,11 +5,13 @@ import RickMortyAPI from "../api/RickMortyAPI";
 //
 import { Paginate } from "../components/Paginate";
 import { CardCharacter } from "../components/Cards/CardCharacter";
+//
+import CharacterI from "../interfaces/CharacterI";
 
 export default function Characters() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [characters, setCharacters] = useState<Array<object>>([]);
+  const [characters, setCharacters] = useState<Array<CharacterI>>([]);
   const [count, setCount] = useState<number>(0);
   const [page, setPage] = useState<string>("1");
 
@@ -39,7 +41,7 @@ export default function Characters() {
   }, [location.search]);
 
   useEffect(() => {
-    navigate(`${location?.pathname}${location?.search}`);
+    navigate(`${location.pathname}${location.search}`);
   }, []);
   return (
     <div
@@ -51,7 +53,7 @@ export default function Characters() {
       className="flex flex-col"
     >
       <div className="flex justify-center pb-4">
-        <Paginate count={count} color="primary" page={page} />
+        <Paginate count={count} page={page} />
       </div>
       <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
         {characters.map((character, index) => {

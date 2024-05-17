@@ -1,9 +1,15 @@
-
+import {ReactNode} from 'react';
+//
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+
+type HomeT = {
+   icon: ReactNode,
+   link:string,
+}
 export default function Home(){
 
-          const icons:Array<object> = [
+          const icons:Array<HomeT> = [
                     {icon: <FaGithub size={30} className="text-white" />, link:'https://github.com/Anniel-Francisco/RICKANDMORTY-API.git'},
                     {icon: <FaLinkedin size={30} className="text-white"/>, link:'https://www.linkedin.com/in/anniel-francisco-reyes-javier-b22347274/'},
           ];
