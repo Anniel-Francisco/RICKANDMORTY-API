@@ -36,6 +36,7 @@ export function Header() {
             className="cursor-pointer hover:-translate-y-1 duration-300"
           />
         </div>
+        {/* Routes */}
         <div className="flex gap-5 text-white">
           {routes.map((route, index) => {
             return (
