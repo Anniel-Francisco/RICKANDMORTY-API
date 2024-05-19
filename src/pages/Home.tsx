@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 //
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-
+//
 type HomeT = {
   icon: ReactNode;
   link: string;
