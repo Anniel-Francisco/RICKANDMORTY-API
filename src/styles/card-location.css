@@ -1,7 +1,6 @@
 .dropdown__content{
     overflow-y: scroll;
     transition: height 0.5s ease-in-out;
- 
 }
 
 .dropdown__content::-webkit-scrollbar {
