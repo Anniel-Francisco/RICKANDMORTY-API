@@ -4,7 +4,7 @@ import { ReactNode, FC } from "react";
 
 import { Header } from "../components/Header";
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export const MainLayout: FC<Props> = ({ children }) => {
