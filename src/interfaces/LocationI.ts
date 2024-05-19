@@ -1,4 +1,3 @@
-
 interface LocationI{
     id:number;
     name:string;

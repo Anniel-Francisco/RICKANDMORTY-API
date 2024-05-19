@@ -85,9 +85,9 @@ export function CardLocation({
           </button>
           <div
             style={{ height: dropDown ? "350px" : "0", width: "100%" }}
-            className=" dropdown__content grid pr-1 grid-cols-5 max-md:grid-cols-4 gap-2 mt-2"
+            className=" dropdown__content grid pr-1 grid-cols-5 max-md:grid-cols-4 gap-2 mt-2 w-full"
           >
-            {population.map((person, index) => {
+            {population.length > 0 ? population.map((person, index) => {
               return (
                 <CardResident
                   key={index}
@@ -95,7 +95,7 @@ export function CardLocation({
                   image={person.image}
                 />
               );
-            })}
+            }) : <span className="font-semibold text-2xl">No residents</span>}
           </div>
         </div>
       </div>
