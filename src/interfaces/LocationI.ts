@@ -1,10 +1,10 @@
-type ResidentT = {};
+
 interface LocationI{
     id:number;
     name:string;
     type:string;
     dimension:string;
-    residents:Array<object>;
+    residents:Array<string>;
 }
 
 export default LocationI;

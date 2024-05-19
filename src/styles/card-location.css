@@ -1,0 +1,25 @@
+.dropdown__content{
+
+    overflow-y: scroll;
+    transition: height 0.5s ease-in-out;
+ 
+}
+
+.dropdown__content::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.dropdown__content::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px; 
+
+}
+.dropdown__content::-webkit-scrollbar-track {
+    background-color: transparent; 
+    border-radius: 10px; 
+}
+
+.dropdown__content::-webkit-scrollbar-thumb:hover {
+    background-color: #8ba6ca;
+}
+
