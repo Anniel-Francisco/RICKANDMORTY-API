@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 //
-import { CardResident } from "./CardResident";
+import { CardResident } from "./Cards/CardResident";
 //
-import LocationI from "../../interfaces/LocationI";
-import "../../styles/card-location.css";
+import LocationI from "../interfaces/LocationI";
+import "../styles/card-location.css";
 //
 type PopulationT = {
   name: string;
   image: string;
 };
-export function CardLocation({
+export function Location({
   id,
   name,
   type,
@@ -30,7 +30,7 @@ export function CardLocation({
       );
       setPopulation(residentsData);
     } catch (error) {
-      console.error("Error al obtener datos de residentes:", error);
+      console.error("Error getting resident data:", error);
     }
   };
 
@@ -103,7 +103,7 @@ export function CardLocation({
   );
 }
 
-CardLocation.propTypes = {
+Location.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
   type: PropTypes.string,

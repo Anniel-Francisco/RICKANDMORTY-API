@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import RickMortyAPI from "../api/RickMortyAPI";
 //
 import { Paginate } from "../components/Paginate";
-import { CardLocation } from "../components/Cards/CardLocation";
+import { Location } from "../components/Location";
 //
 import LocationI from "../interfaces/LocationI";
 
@@ -58,7 +58,7 @@ export default function Locations() {
       <div className="grid grid-cols-1 gap-5">
         {locations.map((location, index) => {
           return (
-            <CardLocation
+            <Location
               key={index}
               id={location.id}
               name={location.name}
