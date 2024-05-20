@@ -10,7 +10,7 @@ export function CardResident({ name, image }: ResidentT) {
   return (
     <div>
       <img className="rounded-lg" src={image ? image : noImage} alt="no image" />
-      <span className="font-semibold">{name}</span>
+      <span className="font-semibold text-lg">{name}</span>
     </div>
   );
 }
