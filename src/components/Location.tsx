@@ -20,7 +20,7 @@ export function Location({
   const [population, setPopulation] = useState<Array<PopulationT>>([]);
   const [dropDown, setDropDown] = useState<boolean>(false);
   //
-  const getResidents = async (residents: Array<string>) => {
+  const getResidents = async () => {
     try {
       const residentsData = await Promise.all(
         residents.map(async (residentUrl: string) => {
@@ -34,17 +34,17 @@ export function Location({
     }
   };
 
-  const showResidents = (residents: Array<string>) => {
+  const showResidents = () => {
     if (!dropDown) {
       setDropDown(true);
-      getResidents(residents);
+      getResidents();
     } else {
       setDropDown(false);
     }
   };
 
   useEffect(() => {
-    getResidents(residents);
+    getResidents();
   }, [residents]);
 
   return (
@@ -79,13 +79,13 @@ export function Location({
           <button
             type="button"
             className="w-full bg-slate-700 h-10 outline-none rounded-md font-bold"
-            onClick={() => showResidents(residents)}
+            onClick={() => showResidents()}
           >
             Residents
           </button>
           <div
             style={{ height: dropDown ? "350px" : "0", width: "100%" }}
-            className=" dropdown__content grid pr-1 grid-cols-5 max-md:grid-cols-4 gap-2 mt-2 w-full"
+            className=" dropdown__content grid pr-1 grid-cols-5 max-md:grid-cols-3 gap-2 mt-2 w-full"
           >
             {population.length > 0 ? population.map((person, index) => {
               return (
