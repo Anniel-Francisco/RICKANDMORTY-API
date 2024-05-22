@@ -32,7 +32,7 @@ export default function Characters() {
       setPagination({
         ...pagination,
         count: pages
-      })
+      });
       setCharacters(results);
     } catch (error) {
       console.error(error);
