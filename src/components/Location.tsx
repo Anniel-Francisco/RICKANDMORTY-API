@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 //
 import { CardResident } from "./Cards/CardResident";
 //
-import LocationI from "../interfaces/LocationI";
+import LocationI from "../types/LocationI";
 import "../styles/card-location.css";
 //
 type PopulationT = {

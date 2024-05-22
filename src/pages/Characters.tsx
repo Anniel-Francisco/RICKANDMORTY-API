@@ -6,7 +6,7 @@ import RickMortyAPI from "../api/RickMortyAPI";
 import { Paginate } from "../components/Paginate";
 import { CardCharacter } from "../components/Cards/CardCharacter";
 //
-import CharacterI from "../interfaces/CharacterI";
+import CharacterI from "../types/CharacterI";
 
 type PaginationT = {
   page: number;

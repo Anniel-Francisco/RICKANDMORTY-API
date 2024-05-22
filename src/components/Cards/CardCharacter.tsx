@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import CharacterI from "../../interfaces/CharacterI";
+import CharacterI from "../../types/CharacterI";
 export function CardCharacter({
   id,
   name,
