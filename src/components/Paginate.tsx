@@ -6,12 +6,12 @@ import Stack from "@mui/material/Stack";
 //
 import PropTypes from "prop-types";
 
-interface Paginate {
+type PaginateT =  {
   count: number;
-  page: string;
+  page: number;
 }
 
-export function Paginate({ count, page }: Paginate) {
+export function Paginate({ count, page }: PaginateT) {
   const location = useLocation();
   const navigate = useNavigate();
   const handleChange = async (
@@ -32,7 +32,7 @@ export function Paginate({ count, page }: Paginate) {
         color="primary"
         showFirstButton
         showLastButton
-        page={page ? parseInt(page) : 1}
+        page={page ? page : 1}
         onChange={handleChange}
       />
     </Stack>
@@ -41,6 +41,5 @@ export function Paginate({ count, page }: Paginate) {
 
 Paginate.propTypes = {
   count: PropTypes.number,
-  color: PropTypes.string,
-  page: PropTypes.string,
+  page: PropTypes.number,
 };

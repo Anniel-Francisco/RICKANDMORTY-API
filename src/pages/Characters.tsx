@@ -8,13 +8,18 @@ import { CardCharacter } from "../components/Cards/CardCharacter";
 //
 import CharacterI from "../interfaces/CharacterI";
 
+type PaginationT = {
+  page: number;
+  count: number;
+}
 export default function Characters() {
   const location = useLocation();
   const navigate = useNavigate();
   const [characters, setCharacters] = useState<Array<CharacterI>>([]);
-  const [count, setCount] = useState<number>(0);
-  const [page, setPage] = useState<string>("1");
-
+  const [pagination, setPagination] = useState<PaginationT>({
+    page: 1,
+    count: 0
+  });
   const getCharacters = async () => {
     try {
       if (!location.search) location.search = `?page=1`;
@@ -24,7 +29,10 @@ export default function Characters() {
           results,
         },
       } = await RickMortyAPI.getCharacters(location.search);
-      setCount(pages);
+      setPagination({
+        ...pagination,
+        count: pages
+      })
       setCharacters(results);
     } catch (error) {
       console.error(error);
@@ -32,7 +40,7 @@ export default function Characters() {
   };
   const setCurrentPage = () => {
     const searchParams = new URLSearchParams(location.search);
-    setPage(searchParams.get("page") || "");
+    pagination.page = parseInt(searchParams.get("page") || "");
   };
 
   useEffect(() => {
@@ -53,7 +61,7 @@ export default function Characters() {
       className="flex flex-col"
     >
       <div className="flex justify-center pb-4">
-        <Paginate count={count} page={page} />
+        <Paginate count={pagination.count} page={pagination.page} />
       </div>
       <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
         {characters.map((character, index) => {
