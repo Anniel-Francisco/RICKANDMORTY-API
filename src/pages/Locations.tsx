@@ -48,11 +48,11 @@ export default function Locations() {
     //
     getLocations();
     setCurrentPage();
-  }, [location.search]);
+  }, [location, location.search, pagination]);
 
   useEffect(() => {
     navigate(`${location.pathname}${location.search}`);
-  }, []);
+  }, [location.pathname, location.search, navigate]);
   return (
     <div
       style={{
