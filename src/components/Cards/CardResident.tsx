@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 //
-import noImage from '../../assets/no-image.jpg';
+import noImage from '/public/no-image.jpg';
 //
 type ResidentT = {
   name: string;
