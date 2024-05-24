@@ -11,39 +11,40 @@ import CharacterI from "../types/CharacterI";
 type PaginationT = {
   page: number;
   count: number;
-}
+};
 export default function Characters() {
   const location = useLocation();
   const navigate = useNavigate();
   const [characters, setCharacters] = useState<Array<CharacterI>>([]);
   const [pagination, setPagination] = useState<PaginationT>({
     page: 1,
-    count: 0
+    count: 0,
   });
-  const getCharacters = async () => {
-    try {
-      if (!location.search) location.search = `?page=1`;
-      const {
-        data: {
-          info: { pages },
-          results,
-        },
-      } = await RickMortyAPI.getCharacters(location.search);
-      setPagination({
-        ...pagination,
-        count: pages
-      });
-      setCharacters(results);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const setCurrentPage = () => {
-    const searchParams = new URLSearchParams(location.search);
-    pagination.page = parseInt(searchParams.get("page") || "");
-  };
 
   useEffect(() => {
+    const getCharacters = async () => {
+      try {
+        if (!location.search) location.search = `?page=1`;
+        const {
+          data: {
+            info: { pages },
+            results,
+          },
+        } = await RickMortyAPI.getCharacters(location.search);
+        setPagination({
+          ...pagination,
+          count: pages,
+        });
+        setCharacters(results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    const setCurrentPage = () => {
+      const searchParams = new URLSearchParams(location.search);
+      pagination.page = parseInt(searchParams.get("page") || "");
+    };
+    //
     getCharacters();
     setCurrentPage();
   }, [location.search]);

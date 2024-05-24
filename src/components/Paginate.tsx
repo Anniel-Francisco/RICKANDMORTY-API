@@ -15,7 +15,7 @@ export function Paginate({ count, page }: PaginateT) {
   const location = useLocation();
   const navigate = useNavigate();
   const handleChange = async (
-    event: React.ChangeEvent<unknown>,
+    _event: React.ChangeEvent<unknown>,
     value: number
   ) => {
     replaceQueryString("page", value.toString());

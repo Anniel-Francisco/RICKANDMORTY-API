@@ -10,40 +10,34 @@ type PopulationT = {
   name: string;
   image: string;
 };
-export function Location({
-  id,
-  name,
-  type,
-  dimension,
-  residents,
-}: LocationI) {
+export function Location({ id, name, type, dimension, residents }: LocationI) {
   const [population, setPopulation] = useState<Array<PopulationT>>([]);
   const [dropDown, setDropDown] = useState<boolean>(false);
   //
-  const getResidents = async () => {
-    try {
-      const residentsData = await Promise.all(
-        residents.map(async (residentUrl: string) => {
-          const response = await fetch(residentUrl);
-          return await response.json();
-        })
-      );
-      setPopulation(residentsData);
-    } catch (error) {
-      console.error("Error getting resident data:", error);
-    }
-  };
 
   const showResidents = () => {
     if (!dropDown) {
       setDropDown(true);
-      getResidents();
     } else {
       setDropDown(false);
     }
   };
 
   useEffect(() => {
+    const getResidents = async () => {
+      try {
+        const residentsData = await Promise.all(
+          residents.map(async (residentUrl: string) => {
+            const response = await fetch(residentUrl);
+            return await response.json();
+          })
+        );
+        setPopulation(residentsData);
+      } catch (error) {
+        console.error("Error getting resident data:", error);
+      }
+    };
+    //
     getResidents();
   }, [residents]);
 
@@ -87,15 +81,19 @@ export function Location({
             style={{ height: dropDown ? "350px" : "0", width: "100%" }}
             className=" dropdown__content grid pr-1 grid-cols-5 max-md:grid-cols-3 gap-2 mt-2 w-full"
           >
-            {population.length > 0 ? population.map((person, index) => {
-              return (
-                <CardResident
-                  key={index}
-                  name={person.name}
-                  image={person.image}
-                />
-              );
-            }) : <span className="font-semibold text-2xl">No residents</span>}
+            {population.length > 0 ? (
+              population.map((person, index) => {
+                return (
+                  <CardResident
+                    key={index}
+                    name={person.name}
+                    image={person.image}
+                  />
+                );
+              })
+            ) : (
+              <span className="font-semibold text-2xl">No residents</span>
+            )}
           </div>
         </div>
       </div>
