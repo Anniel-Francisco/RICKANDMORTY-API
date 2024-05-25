@@ -26,8 +26,9 @@ export default function Home() {
         height: "calc(100vh - 80px)",
         backgroundPositionY: "75%",
         padding: "10px 20px",
+        backgroundImage: "url('/public/background-rick.jpg')",
       }}
-      className="w-full flex max-md:flex-wrap justify-start text-8xl font-extrabold bg-[url('/public/background-rick.jpg')] bg-no-repeat bg-cover"
+      className="w-full flex max-md:flex-wrap justify-start text-8xl font-extrabold bg-no-repeat bg-cover"
     >
       <div className="flex items-center">
         <h1 className="text-white max-md:text-center">Rick and Morty API</h1>
