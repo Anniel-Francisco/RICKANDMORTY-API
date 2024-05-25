@@ -31,7 +31,7 @@ export function Header() {
           <img
             style={{ width: "70px" }}
             onClick={() => goToPage("/")}
-            src="public/rickImage.png"
+            src="/public/rickImage.png"
             alt="rick-image"
             className="cursor-pointer hover:-translate-y-1 duration-300"
           />
