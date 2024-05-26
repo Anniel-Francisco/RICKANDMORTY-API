@@ -15,7 +15,7 @@ type PaginationT = {
 export default function Characters() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [characters, setCharacters] = useState<Array<CharacterI>>([]);
+  const [characters, setCharacters] = useState<CharacterI[]>([]);
   const [pagination, setPagination] = useState<PaginationT>({
     page: 1,
     count: 0,
